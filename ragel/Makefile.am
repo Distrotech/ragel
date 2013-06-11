@@ -39,8 +39,8 @@ EXTRA_DIST = rlscan.rl rlparse.kh rlparse.kl
 
 if BUILD_PARSERS
 
-CLEANFILES = \
-	rlscan.cpp rlparse.h rlparse.cpp
+#CLEANFILES = \
+#	rlscan.cpp rlparse.h rlparse.cpp
 
 rlparse.h: rlparse.kh
 	kelbt -o $@ $<

@@ -327,9 +327,6 @@ BUILT_SOURCES = \
 	rlscan.cpp rlparse.h rlparse.cpp version.h
 
 EXTRA_DIST = rlscan.rl rlparse.kh rlparse.kl
-@BUILD_PARSERS_TRUE@CLEANFILES = \
-@BUILD_PARSERS_TRUE@	rlscan.cpp rlparse.h rlparse.cpp
-
 all: $(BUILT_SOURCES) config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-am
 
@@ -1416,7 +1413,6 @@ install-strip:
 mostlyclean-generic:
 
 clean-generic:
-	-test -z "$(CLEANFILES)" || rm -f $(CLEANFILES)
 
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
@@ -1515,6 +1511,9 @@ uninstall-am: uninstall-binPROGRAMS
 version.h: Makefile
 	echo '#define VERSION "$(PACKAGE_VERSION)"' > version.h
 	echo '#define PUBDATE "$(PUBDATE)"' >> version.h
+
+#CLEANFILES = \
+#	rlscan.cpp rlparse.h rlparse.cpp
 
 @BUILD_PARSERS_TRUE@rlparse.h: rlparse.kh
 @BUILD_PARSERS_TRUE@	kelbt -o $@ $<
